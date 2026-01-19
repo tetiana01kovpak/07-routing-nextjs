@@ -1,3 +1,5 @@
+/* components/Footer.module.css */
+
 .footer {
   padding: 20px;
   background-color: #f0f0f0;
@@ -7,18 +9,10 @@
   border-top: 1px solid #ddd;
 }
 
-.content {
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-  align-items: center;
-}
-
 .wrap {
   display: flex;
   justify-content: center;
   gap: 20px;
-  flex-wrap: wrap;
 }
 
 .footer a {

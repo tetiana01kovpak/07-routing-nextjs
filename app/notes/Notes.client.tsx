@@ -3,6 +3,7 @@
 import { keepPreviousData, useQuery } from "@tanstack/react-query";
 import { useDebounce } from "use-debounce";
 import { useState } from "react";
+import type { NoteTag } from "../../types/note";
 import { fetchNotes } from "../../lib/api";
 import Modal from "../../components/Modal/Modal";
 import NoteForm from "../../components/NoteForm/NoteForm";
@@ -16,24 +17,28 @@ const PER_PAGE = 12;
 export interface NotesClientProps {
   initialPage?: number;
   initialSearch?: string;
+  initialTag?: NoteTag;
 }
 
 export default function NotesClient({
   initialPage = 1,
   initialSearch = "",
+  initialTag,
 }: NotesClientProps) {
   const [page, setPage] = useState(initialPage);
   const [search, setSearch] = useState(initialSearch);
+  const tag = initialTag;
   const [isModalOpen, setModalOpen] = useState(false);
   const [debouncedSearch] = useDebounce(search, 500);
 
   const notesQuery = useQuery({
-    queryKey: ["notes", page, PER_PAGE, debouncedSearch],
+    queryKey: ["notes", tag ?? "all", page, PER_PAGE, debouncedSearch],
     queryFn: () =>
       fetchNotes({
         page,
         perPage: PER_PAGE,
         search: debouncedSearch.trim() || undefined,
+        tag,
       }),
     placeholderData: keepPreviousData,
   });

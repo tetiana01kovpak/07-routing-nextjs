@@ -14,7 +14,6 @@
   padding: 16px 0;
   background-color: #f8f9fa;
   border-bottom: 1px solid #dee2e6;
-  gap: 12px;
 }
 
 .button {
@@ -26,7 +25,6 @@
   border-radius: 4px;
   cursor: pointer;
   transition: background-color 0.2s ease;
-  white-space: nowrap;
 }
 
 .button:hover {
