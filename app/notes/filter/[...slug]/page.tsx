@@ -15,7 +15,7 @@ export default async function NotesByTagPage({
   params,
   searchParams,
 }: {
-  params: { tag: string[] } | Promise<{ tag: string[] }>;
+  params: { slug: string[] } | Promise<{ slug: string[] }>;
   searchParams:
     | Record<string, string | string[] | undefined>
     | Promise<Record<string, string | string[] | undefined>>;
@@ -29,7 +29,7 @@ export default async function NotesByTagPage({
   const page = typeof pageParam === "string" ? Number(pageParam) || 1 : 1;
   const search = typeof searchParam === "string" ? searchParam : "";
 
-  const routeTag = resolvedParams.tag?.[0];
+  const routeTag = resolvedParams.slug?.[0];
   const tag = routeTag && routeTag !== "all" ? (routeTag as NoteTag) : undefined;
 
   const queryClient = new QueryClient();
