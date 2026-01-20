@@ -22,8 +22,12 @@ export default function NotePreviewClient({ id }: NotePreviewClientProps) {
 
   return (
     <Modal onClose={() => router.back()}>
-      <button type="button" onClick={() => router.back()}>
-        Close
+      <button
+        type="button"
+        className={css.backBtn}
+        onClick={() => router.back()}
+      >
+        Go back
       </button>
 
       {noteQuery.isLoading ? (
